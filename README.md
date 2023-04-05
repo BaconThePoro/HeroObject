@@ -8,19 +8,19 @@ Unity specific skills you will need, practice, and demonstrate include:
 
 Working with Unity Prefab
 
-o   Create a prefab in the editor
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o   Create a prefab in the editor
 
-o   Create/Delete objects at run time
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o   Create/Delete objects at run time
 
 Working with Transform of GameObject
 
-o   Set positions
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o   Set positions
 
-o   Set object rotation/orientation
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o   Set object rotation/orientation
 
 User Interface
 
-o   Getting world position from the mouse
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o   Getting world position from the mouse
 
 Object collisions and responses
 
@@ -54,9 +54,9 @@ Size: 1x1
 Aligned with the Transform.up direction of the hero at the spawn time
 Spawned eggs travers towards its Transform.up direction at a speed of 40 unit/sec
 Spawned eggs expires when either of the following condition is true
-o   It reaches the bounds of the world
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o   It reaches the bounds of the world
 
-o   It collides with an enemy
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o   It collides with an enemy
 
 Enemy and Spawning
 Each enemy size is 5x5
@@ -89,7 +89,7 @@ Q-key: Quits the application
 Credit Distribution
 (2%) Camera Setting
 
-o   Height of 100
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o   Height of 100
 
 (30%) Hero
 

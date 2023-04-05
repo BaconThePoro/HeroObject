@@ -3,6 +3,7 @@
 Objective
 How we can create/delete game objects, and, gain some insights into frame vs. wall-clock (real) time.
 \
+\
 Coverage
 Unity specific skills you will need, practice, and demonstrate include:
 
@@ -11,13 +12,13 @@ Working with Unity Prefab
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o   Create a prefab in the editor
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o   Create/Delete objects at run time
-
+\
 Working with Transform of GameObject
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o   Set positions
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o   Set object rotation/orientation
-
+\
 User Interface
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o   Getting world position from the mouse
@@ -27,11 +28,12 @@ Object collisions and responses
  
 
 Concepts you will explore and understand include
-
-The camera and visible world bound
-Frame update time vs, wall-clock real time
-Randomness with simple examples in games
-Simple direct object control: driving an object
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;The camera and visible world bound
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Frame update time vs, wall-clock real time
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Randomness with simple examples in games
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Simple direct object control: driving an object
+\
+\
 Approach
 Please refer to my attempt at the solutionLinks to an external site.. Note the followings, there are three main object categories: hero, eggs spawned, and enemies.
 
@@ -41,10 +43,14 @@ Here are the details:
 
 World Camera Setting
 Height of 100 (total world height is 200)
+\
 Hero
 Size: 5x5
+\
 Control model: Key-M toggles between mouse or keyboard control
+\
 Mouse control: Hero’s position follow that of the mouse at all time. This is the default control (easy for me to test)
+\
 Keyboard control: Up/Down (WS) keys gradually increases/decreases the Hero’s speed moving towards its Transform.up direction.
 Initial speed: 20 units/second
 Left/Right (AD) keys: turn the hero towards left/right at a rate of 45-degrees per second.

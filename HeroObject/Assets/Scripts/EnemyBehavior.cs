@@ -20,7 +20,10 @@ public class EnemyBehavior : MonoBehaviour
     Vector3 stationary = new Vector3(0f, 1f, 0f);
 
     GameObject Hero = null;
-    HeroMovement heroMovement; 
+    HeroMovement heroMovement;
+
+    GameObject lifebar = null; 
+    Vector3 offset = new Vector3(0f, 10f, 0f);
 
     void Start()
     {
@@ -48,10 +51,14 @@ public class EnemyBehavior : MonoBehaviour
             heroMovement.enemiesShot++;
             heroMovement.updateDestroyed();
         }
-            
+
 
         if (gameController.enemyMove == false)
+        {
             transform.up = stationary;
+            Destroy(lifebar);
+        }
+
     }
 
     private void FixedUpdate()
@@ -70,6 +77,35 @@ public class EnemyBehavior : MonoBehaviour
                 waitTime = Time.time + waitAmount;
                 Debug.Log("Plane hit edge");
                 refDirection();
+            }
+
+            if (currLife == 4)
+            {
+                if (lifebar == null)
+                    lifebar = Instantiate(Resources.Load("Prefabs/4life") as GameObject);
+
+                lifebar.transform.position = transform.position + offset;
+            }
+            else if (currLife == 3)
+            {
+                if (lifebar == null)
+                    lifebar = Instantiate(Resources.Load("Prefabs/3life") as GameObject);
+
+                lifebar.transform.position = transform.position + offset;
+            }
+            else if (currLife == 2)
+            {
+                if (lifebar == null)
+                    lifebar = Instantiate(Resources.Load("Prefabs/2life") as GameObject);
+
+                lifebar.transform.position = transform.position + offset;
+            }
+            else if (currLife == 1)
+            {
+                if (lifebar == null)
+                    lifebar = Instantiate(Resources.Load("Prefabs/1life") as GameObject);
+
+                lifebar.transform.position = transform.position + offset;
             }
         }
     }
@@ -111,6 +147,14 @@ public class EnemyBehavior : MonoBehaviour
         currLife--;
         Color newColor = new Color(ourSpriteRenderer.color.r, ourSpriteRenderer.color.g, ourSpriteRenderer.color.b, GetComponent<SpriteRenderer>().color.a * 0.8f);
         ourSpriteRenderer.color = newColor;
+
+        if (lifebar != null)
+            Destroy(lifebar);
     }
 
+    private void OnDestroy()
+    {
+        if (lifebar != null)
+            Destroy(lifebar);
+    }
 }

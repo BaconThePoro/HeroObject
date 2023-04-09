@@ -15,6 +15,9 @@ public class HeroMovement : MonoBehaviour
 
     private GameController mGameGameController = null;
 
+    private float rateOfFire = 0.2f;
+    private float shotCooldown = 0.0f; 
+
     void Start()
     {
         mGameGameController = FindObjectOfType<GameController>();
@@ -59,8 +62,10 @@ public class HeroMovement : MonoBehaviour
                 transform.Rotate(transform.forward, mHeroRotateSpeed * Time.smoothDeltaTime);
             }
         }
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKey(KeyCode.Space) && Time.time > shotCooldown)
         {
+            shotCooldown = Time.time + rateOfFire; 
+
             // Prefab MUST BE locaed in Resources/Prefab folder!
             GameObject e = Instantiate(Resources.Load("Prefabs/Egg") as GameObject);
             e.transform.localPosition = transform.localPosition;

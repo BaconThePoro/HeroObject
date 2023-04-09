@@ -2,22 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
     private int maxPlanes = 10;
     private int numberOfPlanes = 0;
+    public Text ourText = null;
+    EnemyCount enemyCount; 
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        enemyCount = ourText.GetComponent<EnemyCount>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Escape))
+        if (Input.GetKey(KeyCode.Q))
         {
 #if UNITY_EDITOR
             // Application.Quit() does not work in the editor so
@@ -39,11 +42,15 @@ public class GameController : MonoBehaviour
             pos.z = 0;
             e.transform.localPosition = pos;
             ++numberOfPlanes;
+            enemyCount.enemyCount = numberOfPlanes;
+            enemyCount.updateText();
         }
     }
 
     public void EnemyDestroyed()
     {
         --numberOfPlanes;
+        enemyCount.enemyCount = numberOfPlanes;
+        enemyCount.updateText();
     }
 }

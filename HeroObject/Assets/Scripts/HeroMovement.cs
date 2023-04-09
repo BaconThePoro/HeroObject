@@ -5,8 +5,9 @@ using UnityEngine.UI;
 
 public class HeroMovement : MonoBehaviour
 {
+    public Text ControlMode = null; 
     public Text mEnemyCountText = null;
-    public float speed = 10f;
+    public float speed = 20f;
     public float mHeroRotateSpeed = 100f / 2f; // 90-degrees in 2 seconds
     public bool mFollowMousePosition = true;
     // Start is called before the first frame update
@@ -16,11 +17,18 @@ public class HeroMovement : MonoBehaviour
     private GameController mGameGameController = null;
 
     private float rateOfFire = 0.2f;
-    private float shotCooldown = 0.0f; 
+    private float shotCooldown = 0.0f;
+
+    public GameObject TextObject = null;
+    EggCount eggCounter;
+
+    public Text touchedText = null;
+    int touched = 0;
 
     void Start()
     {
         mGameGameController = FindObjectOfType<GameController>();
+        eggCounter = TextObject.GetComponent<EggCount>();
     }
 
     // Update is called once per frame
@@ -30,6 +38,12 @@ public class HeroMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M))
         {
             mFollowMousePosition = !mFollowMousePosition;
+
+            if (mFollowMousePosition)
+                ControlMode.text = "Hero Control Mode: Mouse";
+            else
+                ControlMode.text = "Hero Control Mode: Keyboard";
+
         }
         Vector3 pos = transform.position;
 
@@ -42,14 +56,17 @@ public class HeroMovement : MonoBehaviour
         }
         else
         {
+
+            pos += ((speed * Time.smoothDeltaTime) * transform.up);
+
             if (Input.GetKey(KeyCode.W))
             {
-                pos += ((speed * Time.smoothDeltaTime) * transform.up);
+                speed += 0.1f; 
             }
 
             if (Input.GetKey(KeyCode.S))
             {
-                pos -= ((speed * Time.smoothDeltaTime) * transform.up);
+                speed -= 0.1f; 
             }
 
             if (Input.GetKey(KeyCode.D))
@@ -71,6 +88,8 @@ public class HeroMovement : MonoBehaviour
             e.transform.localPosition = transform.localPosition;
             e.transform.rotation = transform.rotation;
             Debug.Log("Spawn Eggs:" + e.transform.localPosition);
+            eggCounter.eggCount++;
+            eggCounter.updateText();
         }
         transform.position = pos;
     }
@@ -86,6 +105,8 @@ public class HeroMovement : MonoBehaviour
         mEnemyCountText.text = "Enemies Destroyed: " + mPlanesTouched;
         Destroy(collision.gameObject);
         mGameGameController.EnemyDestroyed();
+        touched++; 
+        touchedText.text = "Enemies Touched: " + touched; 
     }
 
     private void OnTriggerStay2D(Collider2D collision)

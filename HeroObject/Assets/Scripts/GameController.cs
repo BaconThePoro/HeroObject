@@ -10,7 +10,15 @@ public class GameController : MonoBehaviour
     private int numberOfPlanes = 0;
     public Text ourText = null;
     EnemyCount enemyCount;
-    public bool enemyMove = false; 
+    public bool enemyMove = false;
+
+    private float waitAmount = 25.0f;
+    private float waitTime = 0.0f;
+    GameObject DogSphere = null;
+    Vector3 newV = new Vector3(-60f, 20f, 0f);
+    Vector3 newR = new Vector3(0.6f, 0.9f, 1f);
+    Vector3 newP = new Vector3(300, -100, 80);
+    
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +29,20 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!enemyMove && DogSphere != null)
+            Destroy(DogSphere);
+
+        if (enemyMove == true && Time.time > waitTime)
+        {
+            Destroy(DogSphere);
+            waitTime = Time.time + waitAmount;
+            DogSphere = Instantiate(Resources.Load("Prefabs/DogSphere") as GameObject);
+            DogSphere.GetComponent<Rigidbody>().velocity = newV;
+            DogSphere.GetComponent <Rigidbody>().angularVelocity = newR;
+            DogSphere.transform.position = newP;
+        }
+
+
         if (Input.GetKeyDown(KeyCode.N))
         {
             flipMove();

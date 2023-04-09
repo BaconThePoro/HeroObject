@@ -1,3 +1,3 @@
 Hero Object Assignment
 
-WebGL Build: 
+WebGL Build:  https://bacontheporo.github.io/HeroObject/WebGL/

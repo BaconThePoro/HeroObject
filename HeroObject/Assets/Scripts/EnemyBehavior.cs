@@ -17,7 +17,10 @@ public class EnemyBehavior : MonoBehaviour
     private float waitTime = 0.0f;
     GameObject ControllerObject;
     GameController gameController; 
-    Vector3 stationary = new Vector3(0f, 1f, 0f); 
+    Vector3 stationary = new Vector3(0f, 1f, 0f);
+
+    GameObject Hero = null;
+    HeroMovement heroMovement; 
 
     void Start()
     {
@@ -29,7 +32,10 @@ public class EnemyBehavior : MonoBehaviour
 
         ControllerObject = GameObject.Find("GameController");
         gameController = ControllerObject.GetComponent<GameController>();
-        
+
+        Hero = GameObject.Find("Hero");
+        heroMovement = Hero.GetComponent<HeroMovement>();
+
     }
 
     // Update is called once per frame
@@ -38,7 +44,9 @@ public class EnemyBehavior : MonoBehaviour
         if (currLife == 0)
         {
             gameController.EnemyDestroyed();
-            Destroy(gameObject); 
+            Destroy(gameObject);
+            heroMovement.enemiesShot++;
+            heroMovement.updateDestroyed();
         }
             
 

@@ -10,6 +10,7 @@ public class HeroMovement : MonoBehaviour
     public float speed = 20f;
     public float mHeroRotateSpeed = 100f / 2f; // 90-degrees in 2 seconds
     public bool mFollowMousePosition = true;
+    public int enemiesShot = 0; 
     // Start is called before the first frame update
 
     private int mPlanesTouched = 0;
@@ -102,7 +103,7 @@ public class HeroMovement : MonoBehaviour
 
         Debug.Log("Here x Plane: OnTriggerEnter2D");
         mPlanesTouched = mPlanesTouched + 1;
-        mEnemyCountText.text = "Enemies Destroyed: " + mPlanesTouched;
+        mEnemyCountText.text = "Enemies Destroyed: " + (mPlanesTouched + enemiesShot);
         Destroy(collision.gameObject);
         mGameGameController.EnemyDestroyed();
         touched++; 
@@ -112,5 +113,10 @@ public class HeroMovement : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         Debug.Log("Here x Plane: OnTriggerStay2D");
+    }
+
+    public void updateDestroyed()
+    {
+        mEnemyCountText.text = "Enemies Destroyed: " + (mPlanesTouched + enemiesShot);
     }
 }

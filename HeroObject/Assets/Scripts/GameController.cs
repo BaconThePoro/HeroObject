@@ -9,7 +9,8 @@ public class GameController : MonoBehaviour
     private int maxPlanes = 10;
     private int numberOfPlanes = 0;
     public Text ourText = null;
-    EnemyCount enemyCount; 
+    EnemyCount enemyCount;
+    public bool enemyMove = false; 
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +21,12 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            flipMove();
+        }
+
+            if (Input.GetKey(KeyCode.Q))
         {
 #if UNITY_EDITOR
             // Application.Quit() does not work in the editor so
@@ -52,5 +58,10 @@ public class GameController : MonoBehaviour
         --numberOfPlanes;
         enemyCount.enemyCount = numberOfPlanes;
         enemyCount.updateText();
+    }
+
+    public void flipMove()
+    {
+        enemyMove = !enemyMove; 
     }
 }

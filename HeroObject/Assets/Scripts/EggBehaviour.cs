@@ -36,7 +36,7 @@ public class EggBehaviour : MonoBehaviour
 
     private void FixedUpdate()
     {
-        ourRb.MovePosition(transform.position + transform.up * (kEggSpeed * Time.smoothDeltaTime));
+        ourRb.MovePosition(transform.position + (transform.up * (kEggSpeed * Time.smoothDeltaTime)));
         if (!s.isInside(transform.GetComponent<Collider2D>().bounds))
         {
             Debug.Log("Egg has hit world boundary");

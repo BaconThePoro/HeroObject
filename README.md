@@ -1,8 +1,8 @@
 Hero Object Assignment 
 \
-Pages URL: https://bacontheporo.github.io/HeroObject/
+Pages URL: [https://bacontheporo.github.io/HeroObject/](https://bacontheporo.github.io/HeroObject/)
 \
-WebGL Build:  https://bacontheporo.github.io/HeroObject/WebGL
+WebGL Build:  [https://bacontheporo.github.io/HeroObject/WebGL/](https://bacontheporo.github.io/HeroObject/WebGL/)
 
 Extra Credit:
 - Enemies move when N is pressed

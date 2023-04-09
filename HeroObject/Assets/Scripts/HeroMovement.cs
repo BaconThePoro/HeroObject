@@ -72,6 +72,10 @@ public class HeroMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // if collision wasnt with an enemy, leave
+        if (collision.gameObject.name != "Enemy(Clone)")
+            return; 
+
         Debug.Log("Here x Plane: OnTriggerEnter2D");
         mPlanesTouched = mPlanesTouched + 1;
         mEnemyCountText.text = "Enemies Destroyed: " + mPlanesTouched;

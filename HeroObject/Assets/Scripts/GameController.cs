@@ -5,13 +5,13 @@ using UnityEngine.Assertions;
 
 public class GameController : MonoBehaviour
 {
-    private int maxPlanes = 5;
+    private int maxPlanes = 10;
     private int numberOfPlanes = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -34,8 +34,8 @@ public class GameController : MonoBehaviour
 
             GameObject e = Instantiate(Resources.Load("Prefabs/Enemy") as GameObject); // Prefab MUST BE locaed in Resources/Prefab folder!
             Vector3 pos;
-            pos.x = s.GetWorldBound().min.x + Random.value * s.GetWorldBound().size.x;
-            pos.y = s.GetWorldBound().min.y + Random.value * s.GetWorldBound().size.y;
+            pos.x = s.GetScaledBound(0.9f).min.x + Random.value * s.GetScaledBound(0.9f).size.x;
+            pos.y = s.GetScaledBound(0.9f).min.y + Random.value * s.GetScaledBound(0.9f).size.y;
             pos.z = 0;
             e.transform.localPosition = pos;
             ++numberOfPlanes;

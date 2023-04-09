@@ -6,6 +6,7 @@ public class CameraSupport : MonoBehaviour
 {
     private Camera mTheCamera;
     private Bounds mWorldBound;  // Computed bound from the camera
+    private Bounds mScaledBound; // value of last scaling input
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +29,21 @@ public class CameraSupport : MonoBehaviour
 
     }
     public Bounds GetWorldBound() { return mWorldBound; }
+
+    public Bounds GetScaledBound(float scaler)
+    {
+        mScaledBound = new Bounds();
+        float maxY = mTheCamera.orthographicSize * scaler;
+        float maxX = mTheCamera.orthographicSize * mTheCamera.aspect * scaler;
+        float sizeX = 2 * maxX;
+        float sizeY = 2 * maxY;
+        Vector3 c = mTheCamera.transform.position;
+        c.z = 0.0f;
+        mScaledBound.center = c;
+        mScaledBound.size = new Vector3(sizeX, sizeY, 1f);
+
+        return mScaledBound;
+    }
 
     public bool isInside(Bounds b1)
     {

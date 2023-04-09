@@ -1,6 +1,6 @@
 Hero Object Assignment 
 
-WebGL Build:  https://bacontheporo.github.io/HeroObject/WebGL/
+WebGL Build:  https://bacontheporo.github.io/HeroObject/WebGL
 
 Extra Credit:
 - Enemies move when N is pressed
